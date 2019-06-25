@@ -1,5 +1,5 @@
 
 # Make Fastlane directory
-mkdir Fastlane
-cd Fastlane
+mkdir fastlane
+cd fastlane
 curl https://raw.githubusercontent.com/TimOliver/Build-Scripts/master/libraries/fastlane/Fastfile > Fastfile
