@@ -1,8 +1,14 @@
+# Download the Gemfile to the project
+curl https://raw.githubusercontent.com/TimOliver/CI/master/libraries/Gemfile > Gemfile
 
-# Make Fastlane directory
-mkdir fastlane
-cd fastlane
-curl https://raw.githubusercontent.com/TimOliver/Build-Scripts/master/libraries/fastlane/Fastfile > Fastfile
+# Install the dependencies from the Gemfile
+bundle install
 
-pwd
-ls -a
+# Make Fastlane directory and move in
+mkdir fastlane && cd fastlane
+
+# Download our library Fastfile into the folder
+curl https://raw.githubusercontent.com/TimOliver/CI/master/libraries/fastlane/Fastfile > Fastfile
+
+# Go back up for the next command
+cd ../
