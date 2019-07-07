@@ -71,15 +71,6 @@ lane :release do
   # Create a new tag and commit it against the last commit
   push_new_tag(tag: latest_version, commit_sha: commit_sha)
 
-  UI.message "Pushing new version to CocoaPods trunk"
-
-  # Publish to CocoaPods trunk (This will fall-through if this release has previously been pushed)
-  begin 
-    pod_push(use_bundle_exec: true, allow_warnings: true)
-  rescue => ex
-    UI.error(ex)
-  end
-
   UI.message "Uploading to GitHub Releases"
 
   # Publish the Release on GitHub
@@ -88,6 +79,15 @@ lane :release do
                       name: "v#{latest_version}",
                       tag_name: latest_version,
                       description: release_notes.first)
+
+  UI.message "Pushing new version to CocoaPods trunk"
+
+  # Publish to CocoaPods trunk (This will fall-through if this release has previously been pushed)
+  begin 
+    pod_push(use_bundle_exec: true, allow_warnings: true)
+  rescue => ex
+    UI.error(ex)
+  end
 
 end
 
