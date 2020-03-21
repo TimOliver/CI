@@ -1,5 +1,9 @@
 default_platform(:ios)
 
+before_all do |lane, options|
+  cocoapods(silent: true)
+end
+
 desc "Runs the unit tests to ensure the build is working"
 lane :test do
   # Perform all of the unit tests in this project
