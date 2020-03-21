@@ -1,7 +1,9 @@
 default_platform(:ios)
 
 before_all do |lane, options|
-  cocoapods(silent: true)
+  if File.exist?('Podfile')
+    cocoapods(silent: true)
+  end
 end
 
 desc "Runs the unit tests to ensure the build is working"
