@@ -62,10 +62,10 @@ lane :release do
     needs_git_push = true
   end
 
-  # If changes were made, push them to master
+  # If changes were made, push them to main
   if needs_git_push
-    UI.message "Pushing bumped version changes to master branch"
-    push_to_git_remote(remote_branch: "master", set_upstream: true)
+    UI.message "Pushing bumped version changes to main branch"
+    push_to_git_remote(remote_branch: "main", set_upstream: true)
   end 
 
   # ---------------------------------------------------------------------
